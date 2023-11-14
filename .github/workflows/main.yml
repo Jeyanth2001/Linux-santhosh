@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '10 14 * * *'
+    - cron: '11 14 * * *'
 
 jobs:
   build:
@@ -24,7 +24,7 @@ jobs:
 
   deploy:
      runs-on: self-hosted
-     if: github.event_name == 'schedule' && contains(github.event.schedule, '10 14 * * *')
+     if: github.event_name == 'schedule' && contains(github.event.schedule, '11 14 * * *')
      steps:
        - name: Debug Information
          run: |
