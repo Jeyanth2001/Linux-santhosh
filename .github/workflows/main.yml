@@ -5,6 +5,9 @@ on:
     workflows: ["Scheduled Trigger"]
     types:
       - completed
+  push:
+    branches:
+      - main
 
 jobs:
   build:
