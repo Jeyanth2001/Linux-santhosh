@@ -10,9 +10,9 @@ on:
 jobs:
   build:
     runs-on: self-hosted
-    on:
-      schedule:
-        - cron: "15 16 * * *"
+    # on:
+    #   schedule:
+    #     - cron: "15 16 * * *"
     if: github.event_name == 'push' || github.event_name == 'schedule'
     steps:
       - name: Checkout code
@@ -28,9 +28,9 @@ jobs:
 
   deploy:
     runs-on: self-hosted
-    on:
-      schedule:
-        - cron: "15 16 * * *"
+    # on:
+    #   schedule:
+    #     - cron: "15 16 * * *"
     if: github.event_name == 'push' || github.event_name == 'schedule'
     steps:
       - name: Debug Information
