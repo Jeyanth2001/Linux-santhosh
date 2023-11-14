@@ -1,39 +1,38 @@
-name: Scheduled Build and Deploy
+name: Build and Deploy
 
 on:
-  schedule:
-    - cron: '15 17 * * *'
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["Scheduled Trigger"]
+    types:
+      - completed
 
 jobs:
   build:
     runs-on: self-hosted
     steps:
-    #   - name: Install timezonectl package
-    #     run: |
-    #       npm install timezonectl@latest
+      - name: Install timezonectl package
+        run: |
+          npm install timezonectl@latest
 
-      # - name: Set timezone
-      #   run: |
-      #     echo "TZ=UTC" >> ~/.bashrc
-      #     source ~/.bashrc
+      - name: Set timezone
+        run: |
+          echo "TZ=UTC" >> ~/.bashrc
+          source ~/.bashrc
 
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # - name: Install dependencies
-      #   run: |
-      #     npm install
+      - name: Install dependencies
+        run: |
+          npm install
 
-      # - name: Build
-      #   run: |
-      #     npm run build
+      - name: Build
+        run: |
+          npm run build
 
   deploy:
     runs-on: self-hosted
-    if: github.event_name == 'push' || github.event_name == 'schedule'
+    if: github.event_name == 'workflow_run' && github.event.workflow == 'Scheduled Trigger'
     needs: build
     steps:
       - name: Checkout code
