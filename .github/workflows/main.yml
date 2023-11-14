@@ -10,7 +10,7 @@ name: Scheduled Build and Deploy
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "56 15 * * *"
   push:
      branches:
        - main  
@@ -18,6 +18,7 @@ on:
 jobs:
  build:
     runs-on: self-hosted
+    if: github.event.schedule == '56 15 * * *'
     #if: github.event_name == 'schedule' && contains(github.event.schedule, '40 02 * * *')
     steps:
       - name: Checkout code
@@ -34,6 +35,7 @@ jobs:
  deploy:
      runs-on: self-hosted
      #if: github.event_name == 'schedule' && contains(github.event.schedule, '40 02 * * *')
+     if: github.event.schedule == '56 15 * * *'
      needs: build
      steps:
        - name: Debug Information
