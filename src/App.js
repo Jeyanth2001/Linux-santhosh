@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          REACT APP
+          REACT-APP
         </a>
       </header>
     </div>
