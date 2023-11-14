@@ -1,50 +1,67 @@
-name: Build and Deploy
+# name: Build and Deploy
 
+# on:
+#   workflow_run:
+#     workflows: ["Scheduled Trigger"]
+#     types:
+#       - completed
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   build:
+#     runs-on: self-hosted
+#     steps:
+#       # - name: Install timezonectl package
+#       #   run: |
+#       #     npm install timezonectl@latest --registry https://npm.pkg.github.com/
+
+#       - name: Set timezone
+#         run: |
+#           echo "TZ=UTC" >> ~/.bashrc
+#           source ~/.bashrc
+
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Install dependencies
+#         run: |
+#           npm install
+
+#       - name: Build
+#         run: |
+#           npm run build
+
+#   deploy:
+#     runs-on: self-hosted
+#     #if: github.event_name == 'workflow_run' && github.event.workflow == 'Scheduled Trigger'
+#     needs: build
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Deploy
+#         run: |
+#           cd /home/icanio-10091/Music/Linux-santhosh
+#           git stash && git pull
+#           pm2 ls
+#           pm2 delete react
+#           pm2 start npm --name react -- start
+
+
+name: Master Build and Deploy
 on:
-  workflow_run:
-    workflows: ["Scheduled Trigger"]
-    types:
-      - completed
   push:
     branches:
       - main
-
+  schedule:
+    - cron: '0 8 1 * *'
 jobs:
   build:
     runs-on: self-hosted
     steps:
-      # - name: Install timezonectl package
-      #   run: |
-      #     npm install timezonectl@latest --registry https://npm.pkg.github.com/
-
-      - name: Set timezone
-        run: |
-          echo "TZ=UTC" >> ~/.bashrc
-          source ~/.bashrc
-
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install dependencies
-        run: |
-          npm install
-
-      - name: Build
-        run: |
-          npm run build
-
-  deploy:
-    runs-on: self-hosted
-    #if: github.event_name == 'workflow_run' && github.event.workflow == 'Scheduled Trigger'
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Deploy
-        run: |
-          cd /home/icanio-10091/Music/Linux-santhosh
-          git stash && git pull
-          pm2 ls
-          pm2 delete react
-          pm2 start npm --name react -- start
+    - uses: actions/checkout@v1
+    - name: Running
+      run: |
+        echo "Running!"
