@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '11 14 * * *'
+    - cron: '1 14 * * *'
 
 jobs:
   build:
@@ -26,17 +26,17 @@ jobs:
      runs-on: self-hosted
      if: github.event_name == 'schedule' && contains(github.event.schedule, '11 14 * * *')
      steps:
-       - name: Debug Information
-         run: |
-           echo "GitHub Event Name: ${{ github.event_name }}"
-           echo "GitHub Event Schedule: ${{ github.event.schedule }}"
-           echo "Current directory: $(pwd)"
-           echo "List files in the current directory: $(ls -al)"
-           echo "GitHub Event: ${{ toJson(github.event) }}"
-       - name: Checkout code
-         uses: actions/checkout@v2
+       #- name: Debug Information
+       #  run: |
+       #    echo "GitHub Event Name: ${{ github.event_name }}"
+       #    echo "GitHub Event Schedule: ${{ github.event.schedule }}"
+       #    echo "Current directory: $(pwd)"
+       #    echo "List files in the current directory: $(ls -al)"
+       #    echo "GitHub Event: ${{ toJson(github.event) }}"
+       #- name: Checkout code
+       #  uses: actions/checkout@v2
 
-       - name: Deploy
+       - name: deploy
          run: |
            cd /home/icanio-10091/Music/Linux-santhosh
            git stash && git pull
