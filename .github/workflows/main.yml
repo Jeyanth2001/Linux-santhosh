@@ -2,7 +2,10 @@ name: Scheduled Build and Deploy
 
 on:
   schedule:
-    - cron: '40 16 * * *'
+    - cron: '50 16 * * *'
+  push:
+    branches:
+      - main
 
 jobs:
   build:
