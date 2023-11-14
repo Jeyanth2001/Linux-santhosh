@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-      - cron: '30 13 * * *'
+    - cron: '35 13 * * *'
 
 jobs:
   build:
@@ -32,7 +32,5 @@ jobs:
           git stash && git pull
           pm2 ls
           pm2 delete react
-          #pm2 delete react
           pm2 start npm --name react -- start
-          # Add commands to deploy your React app to the self-hosted environment
-          # This could involve copying files, starting a server, etc.
+          echo"THANK YOU"
