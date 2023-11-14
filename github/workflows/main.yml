@@ -1,0 +1,30 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Build
+        run: |
+          npm run build
+
+  deploy:
+    runs-on: self-hosted
+    needs: build
+    steps:
+      - name: Deploy to self-hosted environment
+        run: |
+          # Add commands to deploy your React app to the self-hosted environment
+          # This could involve copying files, starting a server, etc.
