@@ -2,8 +2,11 @@ name: Scheduled Build and Deploy
 
 on:
   schedule:
-    - cron: '35 16 * * *'
-
+      - cron: '37 16 * * *'
+  push:
+    branches:
+      - main
+      
 jobs:
   build:
     runs-on: self-hosted
