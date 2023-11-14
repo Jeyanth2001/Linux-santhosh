@@ -13,9 +13,9 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-      - name: Install timezonectl package
-        run: |
-          npm install timezonectl@latest --registry https://npm.pkg.github.com/
+      # - name: Install timezonectl package
+      #   run: |
+      #     npm install timezonectl@latest --registry https://npm.pkg.github.com/
 
       - name: Set timezone
         run: |
