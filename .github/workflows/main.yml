@@ -35,7 +35,7 @@ jobs:
 
   deploy:
     runs-on: self-hosted
-    if: github.event_name == 'workflow_run' && github.event.workflow == 'Scheduled Trigger'
+    #if: github.event_name == 'workflow_run' && github.event.workflow == 'Scheduled Trigger'
     needs: build
     steps:
       - name: Checkout code
