@@ -57,7 +57,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '5 9 * * *'
+    - cron: '7 21 * * *'
 
 jobs:
   build:
@@ -78,5 +78,12 @@ jobs:
           git stash
           git pull
           pm2 ls
-          # pm2 delete react
-          pm2 start npm --name react -- start
+          pm2 delete react
+          # Check if the workflow was triggered by a push event
+          if [ "${{ github.event_name }}" == "push" ]; then
+            pm2 delete react
+            pm2 start npm --name react -- start
+          else
+            echo "Not a push event. Skipping deletion and restart of the application."
+          fi
+
