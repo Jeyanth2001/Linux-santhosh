@@ -2,15 +2,19 @@ name: Scheduled Build and Deploy
 
 on:
   schedule:
-      - cron: '37 16 * * *'
-  push:
-    branches:
-      - main
-      
+    - cron: '20 16 * * * Asia/Kolkata'
+
 jobs:
   build:
     runs-on: self-hosted
     steps:
+      - name: Install actions/timezone action
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+        run: |
+          npm install actions/timezone
+
       - name: Set timezone
         uses: actions/timezone@v3
         with:
