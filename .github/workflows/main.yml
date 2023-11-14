@@ -2,7 +2,7 @@ name: Scheduled Build and Deploy
 
 on:
   schedule:
-    - cron: "04 16 * * *"
+    - cron: "10 16 * * *"
   push:
      branches:
        - main  
@@ -26,6 +26,7 @@ jobs:
 
  deploy:
      runs-on: self-hosted
+     if: github.event_name == 'schedule'
      #if: github.event_name == 'schedule' && contains(github.event.schedule, '40 02 * * *')
      #if: github.event.schedule == '56 15 * * *'
      #needs: build
