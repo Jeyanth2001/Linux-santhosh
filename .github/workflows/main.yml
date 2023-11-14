@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '05 14 * * *'
+    - cron: '10 14 * * *'
 
 jobs:
   build:
@@ -22,24 +22,23 @@ jobs:
         run: |
           npm run build
 
-deploy:
-  runs-on: self-hosted
-  if: github.event_name == 'schedule' && contains(github.event.schedule, '05 14 * * *')
-  steps:
-    - name: Debug Information
-      run: |
-        echo "Current directory: $(pwd)"
-        echo "List files in the current directory: $(ls -al)"
-        echo "GitHub Event: ${{ toJson(github.event) }}"
-        
-    - name: Checkout code
-      uses: actions/checkout@v2
+  deploy:
+    runs-on: self-hosted
+    if: github.event_name == 'schedule' && contains(github.event.schedule, '10 14 * * *')
+    steps:
+      - name: Debug Information
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "List files in the current directory: $(ls -al)"
+          echo "GitHub Event: ${{ toJson(github.event) }}"
+          
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Deploy
-      run: |
-        cd /home/icanio-10091/Music/Linux-santhosh
-        git stash && git pull
-        pm2 ls
-        pm2 delete react
-        pm2 start npm --name react -- start
-
+      - name: Deploy
+        run: |
+          cd /home/icanio-10091/Music/Linux-santhosh
+          git stash && git pull
+          pm2 ls
+          pm2 delete react
+          pm2 start npm --name react -- start
