@@ -24,7 +24,11 @@ jobs:
     runs-on: self-hosted
     needs: build
     steps:
-      - name: Deploy to self-hosted environment
+      - name: react
         run: |
+          cd /home/icanio-10091/Music/Linux-santhosh
+          pm2 ls
+          pm2 delete react
+          pm2 start npm start --name react
           # Add commands to deploy your React app to the self-hosted environment
           # This could involve copying files, starting a server, etc.
