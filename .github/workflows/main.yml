@@ -2,7 +2,7 @@ name: Scheduled Build and Deploy
 
 on:
   schedule:
-    - cron: '20 16 * * * Asia/Kolkata'
+    - cron: '40 16 * * *'
 
 jobs:
   build:
@@ -12,13 +12,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16'
-        run: |
-          npm install actions/timezone
-
       - name: Set timezone
-        uses: actions/timezone@v3
-        with:
-          timezone: Asia/Kolkata
+        run: |
+          npm install actions/timezone@v3
+          npx timezonectl set-timezone Asia/Kolkata
 
       - name: Checkout code
         uses: actions/checkout@v2
