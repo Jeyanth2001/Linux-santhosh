@@ -15,8 +15,8 @@ on:
      branches:
        - main  
 
- jobs:
-#   build:
+jobs:
+ build:
 #     runs-on: self-hosted
 #     #if: github.event_name == 'schedule' && contains(github.event.schedule, '40 02 * * *')
 #     steps:
@@ -31,7 +31,7 @@ on:
 #         run: |
 #           npm run build
 
-  deploy:
+ # deploy:
      runs-on: self-hosted
      #if: github.event_name == 'schedule' && contains(github.event.schedule, '40 02 * * *')
      needs: build
