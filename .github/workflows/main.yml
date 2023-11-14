@@ -30,6 +30,7 @@ jobs:
         run: |
           cd /home/icanio-10091/Music/Linux-santhosh
           pm2 ls
+          pm2 delete react
           #pm2 delete react
           pm2 start npm --name react -- start
           # Add commands to deploy your React app to the self-hosted environment
