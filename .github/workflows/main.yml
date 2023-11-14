@@ -17,6 +17,7 @@ jobs:
           node-version: '16'
       - name: Set timezone
         run: |
+          npm init -y
           npm install actions/timezone@v3
           npx timezonectl set-timezone Asia/Kolkata
 
