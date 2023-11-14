@@ -1,16 +1,21 @@
-name: Build and Deploy
+# name: Build and Deploy
+
+# on:
+#   push:
+#     branches:
+#       - main
+#   schedule:
+#       - cron: '40 02 * * *'\
+name: Scheduled Build and Deploy
 
 on:
-  push:
-    branches:
-      - main
   schedule:
-      - cron: '40 02 * * *'
+    - cron: '49 2 * * *'
 
 jobs:
   build:
     runs-on: self-hosted
-    if: github.event_name == 'schedule' && contains(github.event.schedule, '40 02 * * *')
+    #if: github.event_name == 'schedule' && contains(github.event.schedule, '40 02 * * *')
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -25,7 +30,7 @@ jobs:
 
   deploy:
      runs-on: self-hosted
-     if: github.event_name == 'schedule' && contains(github.event.schedule, '40 02 * * *')
+     #if: github.event_name == 'schedule' && contains(github.event.schedule, '40 02 * * *')
      needs: build
      steps:
        #- name: Debug Information
