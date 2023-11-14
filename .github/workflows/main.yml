@@ -17,34 +17,35 @@ on:
 
 jobs:
  build:
-#     runs-on: self-hosted
-#     #if: github.event_name == 'schedule' && contains(github.event.schedule, '40 02 * * *')
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v2
+    runs-on: self-hosted
+    #if: github.event_name == 'schedule' && contains(github.event.schedule, '40 02 * * *')
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-#       - name: Install dependencies
-#         run: |
-#           npm install
+      - name: Install dependencies
+        run: |
+          npm install
 
-#       - name: Build
-#         run: |
-#           npm run build
+      - name: Build
+        run: |
+          npm run build
 
- # deploy:
+ deploy:
      runs-on: self-hosted
      #if: github.event_name == 'schedule' && contains(github.event.schedule, '40 02 * * *')
      needs: build
      steps:
-       #- name: Debug Information
-       #  run: |
-       #    echo "GitHub Event Name: ${{ github.event_name }}"
-       #    echo "GitHub Event Schedule: ${{ github.event.schedule }}"
-       #    echo "Current directory: $(pwd)"
-       #    echo "List files in the current directory: $(ls -al)"
-       #    echo "GitHub Event: ${{ toJson(github.event) }}"
-       #- name: Checkout code
-       #  uses: actions/checkout@v2
+       - name: Debug Information
+         run: |
+           echo "GitHub Event Name: ${{ github.event_name }}"
+           echo "GitHub Event Schedule: ${{ github.event.schedule }}"
+           echo "Current directory: $(pwd)"
+           echo "List files in the current directory: $(ls -al)"
+           echo "GitHub Event: ${{ toJson(github.event) }}"
+       - name: Checkout code
+         uses: actions/checkout@v2
+
 
        - name: deploy
          run: |
