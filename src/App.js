@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          KUMAR-app
+          KUMAR-DevOps
         </a>
       </header>
     </div>
