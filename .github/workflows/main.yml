@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-      - cron: '25 13 * * *'
+      - cron: '30 13 * * *'
 
 jobs:
   build:
@@ -29,6 +29,7 @@ jobs:
       - name: react
         run: |
           cd /home/icanio-10091/Music/Linux-santhosh
+          git statsh && git pull
           pm2 ls
           pm2 delete react
           #pm2 delete react
