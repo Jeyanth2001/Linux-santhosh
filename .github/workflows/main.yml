@@ -2,16 +2,18 @@ name: Scheduled Build and Deploy
 
 on:
   schedule:
-    - cron: "10 16 * * *"
+    - cron: "15 16 * * *"
   push:
-     branches:
-       - main  
+    branches:
+      - main  
 
 jobs:
- build:
+  build:
     runs-on: self-hosted
+    on:
+      schedule:
+        - cron: "15 16 * * *"
     if: github.event_name == 'push' || github.event_name == 'schedule'
-    #if: github.event_name == 'schedule' && contains(github.event.schedule, '40 02 * * *')
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -24,28 +26,27 @@ jobs:
         run: |
           npm run build
 
- deploy:
-     runs-on: self-hosted
-     if: github.event_name == 'schedule'
-     #if: github.event_name == 'schedule' && contains(github.event.schedule, '40 02 * * *')
-     #if: github.event.schedule == '56 15 * * *'
-     #needs: build
-     steps:
-       - name: Debug Information
-         run: |
-           echo "GitHub Event Name: ${{ github.event_name }}"
-           echo "GitHub Event Schedule: ${{ github.event.schedule }}"
-           echo "Current directory: $(pwd)"
-           echo "List files in the current directory: $(ls -al)"
-           echo "GitHub Event: ${{ toJson(github.event) }}"
-       - name: Checkout code
-         uses: actions/checkout@v2
+  deploy:
+    runs-on: self-hosted
+    on:
+      schedule:
+        - cron: "15 16 * * *"
+    if: github.event_name == 'push' || github.event_name == 'schedule'
+    steps:
+      - name: Debug Information
+        run: |
+          echo "GitHub Event Name: ${{ github.event_name }}"
+          echo "GitHub Event Schedule: ${{ github.event.schedule }}"
+          echo "Current directory: $(pwd)"
+          echo "List files in the current directory: $(ls -al)"
+          echo "GitHub Event: ${{ toJson(github.event) }}"
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-
-       - name: deploy
-         run: |
-           cd /home/icanio-10091/Music/Linux-santhosh
-           git stash && git pull
-           pm2 ls
-           pm2 delete react
-           pm2 start npm --name react -- start
+      - name: Deploy
+        run: |
+          cd /home/icanio-10091/Music/Linux-santhosh
+          git stash && git pull
+          pm2 ls
+          pm2 delete react
+          pm2 start npm --name react -- start
