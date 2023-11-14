@@ -2,7 +2,7 @@ name: Scheduled Build and Deploy
 
 on:
   schedule:
-    - cron: '35 16 * * * Asia/Kolkata'
+    - cron: '35 16 * * *'
 
 jobs:
   build:
