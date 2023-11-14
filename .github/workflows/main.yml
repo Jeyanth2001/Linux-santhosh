@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '51 13 * * *'
+    - cron: '55 13 * * *'
 
 jobs:
   build:
@@ -24,12 +24,10 @@ jobs:
 
   deploy:
     runs-on: self-hosted
-    if: github.event_name == 'schedule' && contains(github.event.schedule, '51 13 * * *')
+    if: github.event_name == 'schedule' && contains(github.event.schedule, '55 13 * * *')
+    needs: build
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Deploy
+      - name: react
         run: |
           cd /home/icanio-10091/Music/Linux-santhosh
           git stash && git pull
