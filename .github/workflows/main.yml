@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Install timezonectl package
         run: |
-          npm install timezonectl@latest
+          npm install timezonectl@latest --registry https://npm.pkg.github.com/
 
       - name: Set timezone
         run: |
