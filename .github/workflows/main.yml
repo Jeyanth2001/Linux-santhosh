@@ -26,7 +26,7 @@ jobs:
                   "title": "Schedule Completed",
                   "imageUrl": "https://cdn.theorg.com/f7155400-1112-4398-9e8d-44a1f056b3b9_medium.jpg",
                   "imageStyle": "AVATAR"
-                },
+                },\n
                 "sections": [
                   {
                     "widgets": [
@@ -34,17 +34,17 @@ jobs:
                         "textParagraph": {
                           "text": "<b>Database:</b> 'DB_NAME'"
                         }
-                      },
+                      },\n
                       {
                         "textParagraph": {
                           "text": "<b>Environment:</b> 'QA'"
                         }
-                      },
+                      },\n
                       {
                         "textParagraph": {
                           "text": "<b>S3 Bucket:</b> 'dasfs'"
                         }
-                      },
+                      },\n
                       {
                         "textParagraph": {
                           "text": "<b>File Name:</b> 'Schedule trigger'"
@@ -55,7 +55,7 @@ jobs:
                 ]
               }
             ]
-          }'
+          }'\n
 
           # Send JSON payload using cURL to Google Chat
           echo "$json_payload" | curl -s --request POST \
