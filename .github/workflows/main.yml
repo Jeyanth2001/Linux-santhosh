@@ -126,7 +126,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '* * * * *'
+    - cron: '00 10 * * *'
 
 jobs:
   build:
