@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          JEyanth-DevOps
+          Jeyanth
         </a>
       </header>
     </div>
