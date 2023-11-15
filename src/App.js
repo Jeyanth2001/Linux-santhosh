@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          JEYANTH_ICANIO
+          JEYANTH_ICANIO-COM
         </a>
       </header>
     </div>
