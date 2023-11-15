@@ -1,23 +1,23 @@
-name: Schedule Trigger
+# name: Schedule Trigger
 
-on:
-  push:
-    branches:
-      - main
-  schedule:
-    - cron: '* * * * *'
+# on:
+#   push:
+#     branches:
+#       - main
+#   schedule:
+#     - cron: '* * * * *'
 
-jobs:
-  build:
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v2
+# jobs:
+#   build:
+#     runs-on: self-hosted
+#     steps:
+#       - uses: actions/checkout@v2
 
-      - name: Running
-        run: |
-          date
-          ls
-          pwd
+#       - name: Running
+#         run: |
+#           date
+#           ls
+#           pwd
 
           # json_payload='{
           #   "cards": [
@@ -119,39 +119,35 @@ jobs:
 #           pm2 start npm --name react -- start
 
 
-# name: Master Build and Deploy
+name: Master Build and Deploy
 
-# on:
-#   push:
-#     branches:
-#       - main
-#   schedule:
-#     - cron: '5 4 * * *'
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '* * * * *'
 
-# jobs:
-#   build:
-#     runs-on: self-hosted
-#     steps:
-#     - name: Checkout code
-#       uses: actions/checkout@v2
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-#   deploy:
-#     runs-on: self-hosted
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v2
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-#       - name: Deploy
-#         run: |
-#           cd /home/icanio-10091/Music/Linux-santhosh
-#           git stash
-#           git pull
-#           pm2 ls
-#           # Check if the workflow was triggered by a push event
-#           if [ "${{ github.event_name }}" == "push" ]; then
-#             # pm2 delete react
-#             pm2 start npm --name react -- start
-#           else
-#             echo "Not a push event. Skipping deletion and restart of the application."
-#           fi
+      - name: Deploy
+        run: |
+          cd /home/icanio-10091/Music/Linux-santhosh
+          git stash
+          git pull
+          pm2 ls
+          pm2 delete react
+          pm2 start npm --name react -- start
+            
 
