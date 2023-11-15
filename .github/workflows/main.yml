@@ -19,6 +19,51 @@ jobs:
           ls
           pwd
 
+          json_payload='{
+            "cards": [
+              {
+                "header": {
+                  "title": "Titandata Database Backup Completed",
+                  "imageUrl": "https://cdn.theorg.com/f7155400-1112-4398-9e8d-44a1f056b3b9_medium.jpg",
+                  "imageStyle": "AVATAR"
+                },
+                "sections": [
+                  {
+                    "widgets": [
+                      {
+                        "textParagraph": {
+                          "text": "<b>Database:</b> '\"$DB_NAME\"'"
+                        }
+                      },
+                      {
+                        "textParagraph": {
+                          "text": "<b>Enviroment:</b> 'QA'"
+                        }
+                      },
+                      {
+                        "textParagraph": {
+                          "text": "<b>S3 Bucket:</b> '\"$S3_BUCKET/$S3_FOLDER\"'"
+                        }
+                      },
+                      {
+                        "textParagraph": {
+                          "text": "<b>File Name:</b> '\"$BACKUP_FILENAME\"'"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }'
+
+          # Send JSON payload using cURL to Google Chat
+          echo "$json_payload" | curl -s --request POST \
+            --header "Content-Type: application/json" \
+            --data @- \
+            "https://chat.googleapis.com/v1/spaces/AAAAiYRfdXo/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=g_0nbpFNOz5S45a_KClz6Mpq-VkR6baR54pD5FNgwrQ"
+
+
 
 
 
