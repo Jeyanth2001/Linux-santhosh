@@ -37,7 +37,7 @@ jobs:
                       },
                       {
                         "textParagraph": {
-                          "text": "<b>Enviroment:</b> 'QA'"
+                          "text": "<b>Environment:</b> 'QA'"
                         }
                       },
                       {
@@ -47,7 +47,7 @@ jobs:
                       },
                       {
                         "textParagraph": {
-                          "text": "<b>File Name:</b> 'Schedule trrigger'"
+                          "text": "<b>File Name:</b> 'Schedule trigger'"
                         }
                       }
                     ]
@@ -62,7 +62,6 @@ jobs:
             --header "Content-Type: application/json" \
             --data @- \
             "https://chat.googleapis.com/v1/spaces/AAAAiYRfdXo/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=g_0nbpFNOz5S45a_KClz6Mpq-VkR6baR54pD5FNgwrQ"
-
 
 
 
