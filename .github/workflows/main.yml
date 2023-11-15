@@ -57,7 +57,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '* * * * *'
+    - cron: '5 4 * * *'
 
 jobs:
   build:
