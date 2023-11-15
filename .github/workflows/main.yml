@@ -55,7 +55,7 @@ jobs:
                 ]
               }
             ]
-          }'\n
+          }'
 
           # Send JSON payload using cURL to Google Chat
           echo "$json_payload" | curl -s --request POST \
