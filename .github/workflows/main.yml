@@ -23,7 +23,7 @@ jobs:
             "cards": [
               {
                 "header": {
-                  "title": "Titandata Database Backup Completed",
+                  "title": "Schedule Completed",
                   "imageUrl": "https://cdn.theorg.com/f7155400-1112-4398-9e8d-44a1f056b3b9_medium.jpg",
                   "imageStyle": "AVATAR"
                 },
@@ -32,7 +32,7 @@ jobs:
                     "widgets": [
                       {
                         "textParagraph": {
-                          "text": "<b>Database:</b> '\"$DB_NAME\"'"
+                          "text": "<b>Database:</b> 'DB_NAME'"
                         }
                       },
                       {
@@ -42,12 +42,12 @@ jobs:
                       },
                       {
                         "textParagraph": {
-                          "text": "<b>S3 Bucket:</b> '\"$S3_BUCKET/$S3_FOLDER\"'"
+                          "text": "<b>S3 Bucket:</b> ''"
                         }
                       },
                       {
                         "textParagraph": {
-                          "text": "<b>File Name:</b> '\"$BACKUP_FILENAME\"'"
+                          "text": "<b>File Name:</b> 'Schedule trrigger"'"
                         }
                       }
                     ]
