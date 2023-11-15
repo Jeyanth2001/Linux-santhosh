@@ -1,48 +1,23 @@
 name: Schedule Trigger
 
 on:
-
   push:
-
     branches:
-
       - Development
-
   schedule:
-
     - cron: '* * * * *'
 
-
-
-
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
+      - uses: actions/checkout@v2
 
-    - uses: actions/checkout@v2
-
-    - name: Running
-
-      run: |
-
-         date
-
-         ls
-
-         pwd
-
-
-
-
-
-
-
-
-
+      - name: Running
+        run: |
+          date
+          ls
+          pwd
 
 
 
